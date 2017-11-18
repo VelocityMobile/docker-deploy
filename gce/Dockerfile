@@ -1,7 +1,7 @@
 FROM google/cloud-sdk:alpine
 
 RUN apk update
-RUN apk add tar
+RUN apk add tar sudo
 
 RUN set -x && \
     VER="17.09.0-ce" && \
