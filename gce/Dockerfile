@@ -3,6 +3,8 @@ FROM google/cloud-sdk:alpine
 RUN apk update
 RUN apk add \ 
   tar \
+  sudo \
+  jq \
   gnupg \
   make \
   g++ \
