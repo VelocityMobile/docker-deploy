@@ -1,7 +1,20 @@
 FROM google/cloud-sdk:alpine
 
 RUN apk update
-RUN apk add tar
+RUN apk add \ 
+  tar \
+  gnupg \
+  make \
+  g++ \
+  openssh \
+  openssl \
+  openssl-dev 
+
+RUN set -x && curl -O https://www.agwa.name/projects/git-crypt/downloads/git-crypt-0.6.0.tar.gz && \
+      tar -zxf git-crypt-0.6.0.tar.gz && \
+      cd git-crypt-0.6.0 && \
+      make && \
+      make install 
 
 RUN set -x && \
     VER="17.09.0-ce" && \
