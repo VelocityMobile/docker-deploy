@@ -7,6 +7,7 @@ RUN apk add \
   jq \
   gnupg \
   make \
+  expect \
   g++ \
   openssh \
   openssl \
