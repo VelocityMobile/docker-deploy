@@ -1,7 +1,6 @@
 FROM mesosphere/aws-cli:latest
 
-RUN apk update
-RUN apk add \ 
+RUN apk add --update \ 
   tar \
   sudo \
   jq \
@@ -11,7 +10,9 @@ RUN apk add \
   g++ \
   openssh \
   openssl \
-  openssl-dev 
+  openssl-dev \
+  curl \
+  bash
 
 RUN set -x && curl -O https://www.agwa.name/projects/git-crypt/downloads/git-crypt-0.6.0.tar.gz && \
       tar -zxf git-crypt-0.6.0.tar.gz && \
