@@ -1,0 +1,26 @@
+FROM mesosphere/aws-cli:latest
+
+RUN apk update
+RUN apk add \ 
+  tar \
+  sudo \
+  jq \
+  gnupg \
+  make \
+  expect \
+  g++ \
+  openssh \
+  openssl \
+  openssl-dev 
+
+RUN set -x && curl -O https://www.agwa.name/projects/git-crypt/downloads/git-crypt-0.6.0.tar.gz && \
+      tar -zxf git-crypt-0.6.0.tar.gz && \
+      cd git-crypt-0.6.0 && \
+      make && \
+      make install 
+
+RUN set -x && \
+    VER="17.09.0-ce" && \
+    curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz && \
+    tar -xzf /tmp/docker-$VER.tgz -C /tmp && \
+    mv /tmp/docker/* /usr/bin
