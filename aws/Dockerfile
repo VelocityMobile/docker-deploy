@@ -1,19 +1,31 @@
-FROM mesosphere/aws-cli:latest
+FROM alpine:latest
+RUN apk -v --no-cache add \
+        tar \
+        sudo \
+        jq \
+        gnupg \
+        make \
+        expect \
+        g++ \
+        openssh \
+        openssl \
+        openssl-dev \
+        curl \
+        bash \
+        git \
+        python \
+        py-pip \
+        groff \
+        less \
+        mailcap \
+        && \
+    pip install --upgrade awscli s3cmd python-magic && \
+    apk -v --purge del py-pip
 
-RUN apk add --update \ 
-  tar \
-  sudo \
-  jq \
-  gnupg \
-  make \
-  expect \
-  g++ \
-  openssh \
-  openssl \
-  openssl-dev \
-  curl \
-  bash \
-  git
+VOLUME /root/.aws
+VOLUME /project
+
+WORKDIR /project
 
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.3.4/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
