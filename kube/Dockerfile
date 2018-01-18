@@ -1,5 +1,7 @@
 FROM google/cloud-sdk:alpine
 
+RUN gcloud components install kubectl
+
 RUN apk add --no-cache \ 
       tar \
       sudo \
@@ -30,8 +32,6 @@ VOLUME /root/.aws
 VOLUME /project
 
 WORKDIR /project
-
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.3.4/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
 RUN set -x && curl -O https://www.agwa.name/projects/git-crypt/downloads/git-crypt-0.6.0.tar.gz && \
       tar -zxf git-crypt-0.6.0.tar.gz && \
