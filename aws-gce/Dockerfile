@@ -20,8 +20,11 @@ RUN apk add --no-cache \
       less \
       mailcap \
       && \
-  pip install --upgrade awscli s3cmd python-magic && \
-  apk -v --purge del py-pip
+  pip install --upgrade awscli s3cmd python-magic
+
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh \
+    && chmod +x get_helm.sh \
+    && ./get_helm.sh
 
 VOLUME /root/.aws
 VOLUME /project
