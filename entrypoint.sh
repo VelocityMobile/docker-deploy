@@ -20,13 +20,13 @@ while test $# -gt 0; do
 done
 
 # Clone using passed in KUBE_OAUTH token
-git clone --depth 1 -b develop https://$KUBE_OAUTH:x-oauth-basic@github.com/$KUBE_REPO.git $KUBE_REPO
+git clone --depth 1 -b develop https://$KUBE_OAUTH:x-oauth-basic@github.com/$KUBE_REPO.git /bin/user-repo 
 
 # Decrypt
-$KUBE_REPO/ci-decrypt
+/bin/user-repo/ci-decrypt
 
 # Link for easy usage
-ln -s $KUBE_REPO/build/docker /usr/local/bin/build-docker
-ln -s $KUBE_REPO/build/circle-app-env /usr/local/bin/build-circle-app-env
-ln -s $KUBE_REPO/deploy/upload-docker-image /usr/local/bin/deploy-upload-docker-image
-ln -s $KUBE_REPO/deploy/kube /usr/local/bin/deploy-kube
+ln -s /bin/user-repo/build/docker /usr/local/bin/build-docker
+ln -s /bin/user-repo/build/circle-app-env /usr/local/bin/build-circle-app-env
+ln -s /bin/user-repo/deploy/upload-docker-image /usr/local/bin/deploy-upload-docker-image
+ln -s /bin/user-repo/deploy/kube /usr/local/bin/deploy-kube
