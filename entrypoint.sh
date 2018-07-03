@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo "GOT HERE $@"
+
 while test $# -gt 0; do
   case "$1" in
     -o*|--oauth*)
@@ -19,11 +21,14 @@ while test $# -gt 0; do
   esac
 done
 
+echo $OAUTH
+echo $REPO
+
 # Clone using passed in OAUTH token
 git clone --depth 1 -b develop https://$OAUTH:x-oauth-basic@github.com/$REPO.git /usr/lib/$REPO
 
 # Decrypt
-./$REPO/ci-decrypt
+/usr/lib/$REPO/ci-decrypt
 
 # Link for easy usage
 ln -s /usr/lib/$REPO/build/docker /usr/local/bin/build-docker
