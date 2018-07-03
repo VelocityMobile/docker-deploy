@@ -27,5 +27,7 @@ RUN set -x && \
 COPY entrypoint.sh /entrypoint
 RUN chmod +x /entrypoint
 
+ENV KUBE_PATH /bin/user-repo
+
 ENTRYPOINT ["/entrypoint"]
 CMD ["/bin/bash"]
