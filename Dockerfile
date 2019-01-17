@@ -1,4 +1,6 @@
-FROM google/cloud-sdk:latest
+FROM google/cloud-sdk:alpine
+
+RUN gcloud components install kubectl docker-credential-gcr
 
 RUN apk add --no-cache \ 
   tar \
