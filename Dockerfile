@@ -34,4 +34,3 @@ ENV KUBE_PATH /bin/user-repo
 LABEL com.circleci.preserve-entrypoint=true
 
 ENTRYPOINT ["/entrypoint"]
-CMD ["/bin/bash"]
