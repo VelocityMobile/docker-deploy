@@ -31,6 +31,6 @@ RUN chmod +x /entrypoint
 
 ENV KUBE_PATH /bin/user-repo
 
-LABEL com.circleci.preserve-entrypoint=true
+# LABEL com.circleci.preserve-entrypoint=true
 
 ENTRYPOINT ["/entrypoint"]
