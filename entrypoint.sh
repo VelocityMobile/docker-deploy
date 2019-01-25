@@ -33,5 +33,3 @@ ln -s $KUBE_PATH/deploy/kube /usr/local/bin/deploy-kube
 ln -s $KUBE_PATH/deploy/deploy-docker /usr/local/bin/deploy-docker
 ln -s $KUBE_PATH/deploy/deploy-to-kube /usr/local/bin/deploy-to-kube
 ln -s $KUBE_PATH/deploy/get-deploy-yaml /usr/local/bin/get-deploy-yaml
-
-tail -f /dev/null
